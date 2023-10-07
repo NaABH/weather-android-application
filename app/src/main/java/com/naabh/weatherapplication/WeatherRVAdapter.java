@@ -18,15 +18,17 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+// adapter class to bind data to the RecyclerView
 public class WeatherRVAdapter extends RecyclerView.Adapter<WeatherRVAdapter.ViewHolder> {
     private Context context;
-    private ArrayList<WeatherRVModal> weatherRVModelArrayList;
+    private ArrayList<WeatherRVModal> weatherRVModelArrayList; // hold weather data
 
     public WeatherRVAdapter(Context context, ArrayList<WeatherRVModal> weatherRVModelArrayList) {
         this.context = context;
         this.weatherRVModelArrayList = weatherRVModelArrayList;
     }
 
+    // create a new viewHolder to represent an item in the list
     @NonNull
     @Override
     public WeatherRVAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -34,9 +36,10 @@ public class WeatherRVAdapter extends RecyclerView.Adapter<WeatherRVAdapter.View
         return new ViewHolder(view);
     }
 
+    // bind data to a ViewHolder at a specific position
     @Override
     public void onBindViewHolder(@NonNull WeatherRVAdapter.ViewHolder holder, int position) {
-        WeatherRVModal modal = weatherRVModelArrayList.get(position);
+        WeatherRVModal modal = weatherRVModelArrayList.get(position); // get current modal
         holder.temperatureTV.setText(modal.getTemperature()+"°c");
         Picasso.get().load("http:".concat(modal.getIcon())).into(holder.conditionIV);
         holder.windTV.setText(modal.getWindSpeed() + "Km/h");
@@ -51,20 +54,22 @@ public class WeatherRVAdapter extends RecyclerView.Adapter<WeatherRVAdapter.View
 
     }
 
+    // return number of items (weather information)
     @Override
     public int getItemCount() {
         return weatherRVModelArrayList.size();
     }
 
+    // inner class that represents a single item view within the RecyclerView
     public class ViewHolder extends RecyclerView.ViewHolder{
         private TextView windTV, temperatureTV, timeTV;
         private ImageView conditionIV;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            windTV = itemView.findViewById(R.id.idTVWindSpeed);
-            temperatureTV = itemView.findViewById(R.id.idTVTemperature);
             timeTV = itemView.findViewById(R.id.idTVTime);
-            conditionIV = itemView.findViewById(R.id.idTVCondition);
+            temperatureTV = itemView.findViewById(R.id.idTVTemperature);
+            conditionIV = itemView.findViewById(R.id.idIVCondition2);
+            windTV = itemView.findViewById(R.id.idTVWindSpeed);
         }
     }
 }

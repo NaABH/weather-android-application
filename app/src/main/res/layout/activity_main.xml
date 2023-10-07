@@ -5,13 +5,13 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/black_shade_1"
-    tools:context="com.example.weatherapplication.com.naabh.weatherapplication.MainActivity">
+    tools:context="com.naabh.weatherapplication.MainActivity">
 
     <ProgressBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/idPBLoading"
-        android:visibility="visible"
+        android:visibility="gone"
         android:layout_centerInParent="true"
         />
 
@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/idRLHome"
-        android:visibility="gone"
+        android:visibility="visible"
         >
 
         <ImageView
@@ -82,7 +82,7 @@
 
             <ImageView
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="0.5"
                 android:id="@+id/idTVSearch"
                 android:layout_margin="10dp"
@@ -117,16 +117,18 @@
             android:src="@mipmap/ic_launcher"/>
 
         <TextView
+            android:id="@+id/idTVCondition"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/idTVCondition"
-            android:layout_margin="10dp"
+            android:layout_below="@+id/idTVIcon"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
             android:gravity="center"
             android:text="Condition"
             android:textAlignment="center"
-            android:textColor="@color/white"
-            android:layout_below="@+id/idTVIcon"
-            />
+            android:textColor="@color/white" />
 
         <TextView
             android:layout_width="match_parent"
@@ -136,13 +138,15 @@
             android:text="Today's Weather Forecast"
             android:textColor="@color/white"
             android:textStyle="bold"
-            android:layout_above="@+id/idRVWeather"
+            android:layout_below="@+id/idTVCondition"
+            android:id="@+id/idText"
             />
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/idRVWeather"
+            android:layout_below="@+id/idText"
             android:layout_alignParentBottom="true"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"

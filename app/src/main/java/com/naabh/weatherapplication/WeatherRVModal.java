@@ -1,7 +1,9 @@
 package com.naabh.weatherapplication;
 
+// class for weather information that used in RecyclerView
 public class WeatherRVModal {
 
+    // weather information variables
     private String time;
     private String temperature;
     private String icon;
